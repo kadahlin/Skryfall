@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="8.0">
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/CallService.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="19" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="20" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="21" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="22" column="26" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="25" column="24" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="28" column="34" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="31" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="35" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="36" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="37" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="53" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="54" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="55" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="62" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="63" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="64" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/CallbackClient.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="3" column="1" severity="error" message="Wildcard import" source="no-wildcard-imports" />
+		<error line="53" column="29" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="53" column="67" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="57" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="57" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="63" column="29" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="63" column="67" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="67" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="67" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="73" column="29" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="73" column="67" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="77" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="77" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="83" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="85" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="85" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="95" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="97" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="97" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="107" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="109" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="109" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="119" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="121" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="121" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="131" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="133" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="133" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="144" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="146" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="146" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="152" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="154" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="154" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="165" column="29" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="165" column="73" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="167" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="167" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="177" column="33" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="179" column="15" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="179" column="36" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="181" column="1" severity="error" message="Unexpected blank line(s) before &quot;}&quot;" source="no-blank-line-before-rbrace" />
+		<error line="182" column="1" severity="error" message="Needless blank line(s)" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/CardQueries.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="33" column="1" severity="error" message="Unexpected blank line(s) before &quot;}&quot;" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/CardQuery.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/ClientException.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/Executors.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="3" column="1" severity="error" message="Wildcard import" source="no-wildcard-imports" />
+		<error line="28" column="37" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="28" column="52" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="30" column="11" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="31" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="32" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="33" column="1" severity="error" message="Unexpected indentation (8) (should be 12)" source="indent" />
+		<error line="33" column="9" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="58" column="37" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="58" column="59" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="60" column="11" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="61" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="62" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="63" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="64" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="65" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="66" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="67" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="68" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="69" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="69" column="45" severity="error" message="Missing newline after &quot;(&quot;" source="indent" />
+		<error line="69" column="67" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="70" column="1" severity="error" message="Unexpected indentation (20) (should be 24)" source="indent" />
+		<error line="71" column="1" severity="error" message="Unexpected indentation (16) (should be 20)" source="indent" />
+		<error line="71" column="19" severity="error" message="Missing newline after &quot;,&quot;" source="indent" />
+		<error line="72" column="1" severity="error" message="Unexpected indentation (20) (should be 28)" source="indent" />
+		<error line="73" column="1" severity="error" message="Unexpected indentation (20) (should be 28)" source="indent" />
+		<error line="74" column="1" severity="error" message="Unexpected indentation (16) (should be 24)" source="indent" />
+		<error line="74" column="17" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+		<error line="75" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="76" column="1" severity="error" message="Unexpected indentation (12) (should be 16)" source="indent" />
+		<error line="77" column="1" severity="error" message="Unexpected indentation (8) (should be 12)" source="indent" />
+		<error line="77" column="9" severity="error" message="Missing newline before &quot;)&quot;" source="indent" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/Serializers.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="14" column="1" severity="error" message="Wildcard import" source="no-wildcard-imports" />
+		<error line="26" column="97" severity="error" message="Missing space after //" source="comment-spacing" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/Card.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="11" column="1" severity="error" message="Wildcard import" source="no-wildcard-imports" />
+		<error line="29" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+		<error line="68" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/CardColor.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/CardSymbol.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/ManaCost.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/Ruling.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="6" column="1" severity="error" message="Wildcard import" source="no-wildcard-imports" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/objects/Set.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Artist.kt">
+		<error line="1" column="1" severity="error" message="class StringQuery should be declared in a file named StringQuery.kt" source="filename" />
+		<error line="12" column="1" severity="error" message="Needless blank line(s)" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/ArtistFlavortextWatermark.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/CardText.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Cube.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Format.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Land.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Language.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="7" column="5" severity="error" message="Missing space after //" source="comment-spacing" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Name.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/NumericQueryBuilder.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="17" column="1" severity="error" message="Unexpected blank line(s) before &quot;}&quot;" source="no-blank-line-before-rbrace" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Prices.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Sets.kt">
+		<error line="19" column="1" severity="error" message="Needless blank line(s)" source="no-consecutive-blank-lines" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Type.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+	</file>
+	<file name="src/main/kotlin/com/kyledahlin/scryfall/queries/Watermark.kt">
+		<error line="3" column="1" severity="error" message="Unused import" source="no-unused-imports" />
+		<error line="4" column="1" severity="error" message="Unused import" source="no-unused-imports" />
+		<error line="6" column="1" severity="error" message="Needless blank line(s)" source="no-consecutive-blank-lines" />
+	</file>
+</checkstyle>

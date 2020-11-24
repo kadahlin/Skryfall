@@ -16,25 +16,25 @@ private const val ENDPOINT = "https://api.scryfall.com"
  * Client for interacting with the scryfall api and fetching data about magic cards
  */
 interface CallService {
-    //---------------------------------
-    //Sets
-    //---------------------------------
-    @GET("/sets/{code}") //set with this exact code
+    // ---------------------------------
+    // Sets
+    // ---------------------------------
+    @GET("/sets/{code}") // set with this exact code
     fun getSetWithCode(@Path("code") code: String): Call<ResponseBody>
 
-    @GET("/sets/{id}") //set with this exact id
+    @GET("/sets/{id}") // set with this exact id
     fun getSetWithId(@Path("id") id: String): Call<ResponseBody>
 
-    @GET("/sets/tcgplayer/{id}") //set with this exact id
+    @GET("/sets/tcgplayer/{id}") // set with this exact id
     fun getSetWithTcgPlayerId(@Path("id") id: String): Call<ResponseBody>
 
-    //all sets
+    // all sets
     @GET("/sets")
     fun getSets(): Call<ResponseBody>
 
-    //---------------------------------
-    //Rulings
-    //---------------------------------
+    // ---------------------------------
+    // Rulings
+    // ---------------------------------
     @GET("/cards/multiverse/{id}/rulings")
     fun getRulingsForMultiverseId(@Path("id") id: String): Call<ResponseBody>
 
@@ -50,14 +50,29 @@ interface CallService {
     @GET("/cards/{id}/rulings")
     fun getRulingsForCardId(@Path("id") id: String): Call<ResponseBody>
 
-    //---------------------------------
-    //Symbols
-    //---------------------------------
+    // ---------------------------------
+    // Symbols
+    // ---------------------------------
     @GET("/symbology")
     fun getAllSymbols(): Call<ResponseBody>
 
     @GET("/symbology/parse-mana")
     fun getManaCostForSymbols(@Query("cost") cost: String): Call<ResponseBody>
+
+    // ---------------------------------
+    // Cards
+    // ---------------------------------
+    @GET("/cards/search")
+    fun searchCards(
+        @Query("q") name: String,
+        @Query("include_extras") unique: String? = null,
+        @Query("order") order: String? = null,
+        @Query("dir") dir: String? = null,
+        @Query("include_extras") includeExtras: Boolean? = null,
+        @Query("include_multilingual") includeMultilingual: Boolean? = null,
+        @Query("include_variations") includeVariations: Boolean? = null,
+        @Query("page") page: Int = 1,
+    ): Call<ResponseBody>
 
     object Keys {
         const val SET = "set"

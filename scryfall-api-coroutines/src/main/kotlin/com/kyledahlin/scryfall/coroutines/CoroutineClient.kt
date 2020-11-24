@@ -1,12 +1,7 @@
 package com.kyledahlin.scryfall.coroutines
 
-import com.kyledahlin.scryfall.CallService
-import com.kyledahlin.scryfall.ClientException
-import com.kyledahlin.scryfall.executeAndFold
-import com.kyledahlin.scryfall.executeListAndFold
-import com.kyledahlin.scryfall.objects.CardSymbol
-import com.kyledahlin.scryfall.objects.ManaCost
-import com.kyledahlin.scryfall.objects.Ruling
+import com.kyledahlin.scryfall.*
+import com.kyledahlin.scryfall.objects.*
 import com.kyledahlin.scryfall.objects.Set
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +32,8 @@ interface CoroutineClient {
 
     suspend fun getAllSymbols(): ClientResponse<Collection<CardSymbol>>
     suspend fun getManaCostForSymbols(symbols: List<CardSymbol>): ClientResponse<ManaCost>
+
+    suspend fun searchCards(query: CardQuery): ClientResponse<Collection<Card>>
 }
 
 class CoroutineClientImpl(
@@ -99,6 +96,11 @@ class CoroutineClientImpl(
         service
             .getManaCostForSymbols(symbols.joinToString("") { it.symbol })
             .suspendToResponse(CallService.Keys.MANA_COST)
+
+    override suspend fun searchCards(query: CardQuery): ClientResponse<Collection<Card>> =
+        service
+            .searchCards(query.toQueryString())
+            .suspendListToResponse()
 
     private suspend inline fun <reified T> Call<ResponseBody>.suspendToResponse(
         expectedObject: String,

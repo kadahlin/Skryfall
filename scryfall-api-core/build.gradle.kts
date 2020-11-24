@@ -4,6 +4,8 @@ plugins {
     kotlin("kapt")
 }
 
+apply(plugin = "org.jmailen.kotlinter")
+
 dependencies {
     implementation(Libs.kotlin)
     api(Libs.retrofit)

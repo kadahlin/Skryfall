@@ -20,14 +20,21 @@ fun Call<ResponseBody>.executeAndFold(
         val response = execute()
         if (response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
             onFailure(UnknownResourceException())
+            return
         }
+        print(response.code())
         val body = response.body()?.string() ?: "{}"
         val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
-        responseMap.foldForExpected(expectedObject, {
-            onFailure(UnknownException())
-        }, {
-            onResponse(responseMap)
-        })
+        responseMap.foldForExpected(
+            expectedObject,
+            {
+                onFailure(UnknownException())
+            },
+            {
+                println(responseMap)
+                onResponse(responseMap)
+            }
+        )
     } catch (e: Exception) {
         println("caught exc: $e")
         val exception = when (e) {
@@ -45,28 +52,41 @@ fun Call<ResponseBody>.executeListAndFold(
 
     try {
         val response = execute()
+        if (response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
+            onFailure(UnknownResourceException())
+            return
+        }
         val result = mutableListOf<JsonObject>()
         val body = response.body()?.string() ?: "{}"
         val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
-        responseMap.foldForExpected(CallService.Keys.LIST, {
-            onFailure(UnknownException())
-        }, {
-            result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
-            var hasMore = responseMap[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
-            while (hasMore == true) {
-                val url = HttpUrl.get(responseMap[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.contentOrNull ?: "")
-                val response = OkHttpClient().newCall(Request.Builder().url(url).get().build()).execute()
-                val body = response.body()?.string() ?: "{}"
-                val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
-                hasMore = responseMap["has_more"]?.jsonPrimitive?.booleanOrNull
-                responseMap.foldForExpected(CallService.Keys.LIST, {
-                    result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
-                }, {
-                    onFailure(UnknownException())
-                })
+        responseMap.foldForExpected(
+            CallService.Keys.LIST,
+            {
+                onFailure(UnknownException())
+            },
+            {
+                result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
+                var hasMore = responseMap[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
+                while (hasMore == true) {
+                    val url = HttpUrl.get(responseMap[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.contentOrNull ?: "")
+                    val response = OkHttpClient().newCall(Request.Builder().url(url).get().build()).execute()
+                    val body = response.body()?.string() ?: "{}"
+                    val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
+                    hasMore = responseMap["has_more"]?.jsonPrimitive?.booleanOrNull
+                    responseMap.foldForExpected(
+                        CallService.Keys.LIST,
+                        {
+                            result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
+                        },
+                        {
+                            println(responseMap)
+                            onFailure(UnknownException())
+                        }
+                    )
+                }
+                onResponse(result)
             }
-            onResponse(result)
-        })
+        )
     } catch (e: Exception) {
         println("caught exc: $e")
         val exception = when (e) {

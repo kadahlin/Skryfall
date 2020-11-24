@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable(with = CardColorSerializer::class)
 enum class CardColor {
-    WHITE, BLACK, RED, BLUE, GREEN
+    WHITE, BLACK, RED, BLUE, GREEN, COLORLESS
 }

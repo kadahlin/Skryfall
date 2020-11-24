@@ -1,8 +1,6 @@
 package com.kyledahlin.scryfall
 
-import com.kyledahlin.scryfall.objects.CardSymbol
-import com.kyledahlin.scryfall.objects.ManaCost
-import com.kyledahlin.scryfall.objects.Ruling
+import com.kyledahlin.scryfall.objects.*
 import com.kyledahlin.scryfall.objects.Set
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
@@ -39,6 +37,8 @@ interface MtgClient {
         onSuccess: (ManaCost) -> Unit,
         onFailure: (ClientException) -> Unit
     )
+
+    fun searchCard(query: CardQuery, onSuccess: (Collection<Card>) -> Unit, onFailure: (ClientException) -> Unit)
 }
 
 class MtgClientImpl(
@@ -50,39 +50,54 @@ class MtgClientImpl(
     override fun getSetWithCode(code: String, onSuccess: (Set) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getSetWithCode(code)
-            .executeAndFold(expectedObject = CallService.Keys.SET, {
-                onSuccess(
-                    json.decodeFromJsonElement(Set.serializer(), it)
-                )
-            }, onFailure = onFailure)
+            .executeAndFold(
+                expectedObject = CallService.Keys.SET,
+                {
+                    onSuccess(
+                        json.decodeFromJsonElement(Set.serializer(), it)
+                    )
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getSetWithId(id: String, onSuccess: (Set) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getSetWithId(id)
-            .executeAndFold(expectedObject = CallService.Keys.SET, {
-                onSuccess(
-                    json.decodeFromJsonElement(Set.serializer(), it)
-                )
-            }, onFailure = onFailure)
+            .executeAndFold(
+                expectedObject = CallService.Keys.SET,
+                {
+                    onSuccess(
+                        json.decodeFromJsonElement(Set.serializer(), it)
+                    )
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getSetWithTcgPlayerId(id: String, onSuccess: (Set) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getSetWithTcgPlayerId(id)
-            .executeAndFold(expectedObject = CallService.Keys.SET, {
-                onSuccess(
-                    json.decodeFromJsonElement(Set.serializer(), it)
-                )
-            }, onFailure = onFailure)
+            .executeAndFold(
+                expectedObject = CallService.Keys.SET,
+                {
+                    onSuccess(
+                        json.decodeFromJsonElement(Set.serializer(), it)
+                    )
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getSets(onSuccess: (Collection<Set>) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getSets()
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getRulingsForMtgoId(
@@ -92,9 +107,12 @@ class MtgClientImpl(
     ) {
         service
             .getRulingsForMtgoId(id)
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getRulingsForArenaId(
@@ -104,9 +122,12 @@ class MtgClientImpl(
     ) {
         service
             .getRulingsForArenaId(id)
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getRulingsForMultiverseId(
@@ -116,9 +137,12 @@ class MtgClientImpl(
     ) {
         service
             .getRulingsForMultiverseId(id)
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getRulingsForCardId(
@@ -128,9 +152,12 @@ class MtgClientImpl(
     ) {
         service
             .getRulingsForCardId(id)
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getRulingsForCodeAndNumber(
@@ -141,17 +168,23 @@ class MtgClientImpl(
     ) {
         service
             .getRulingsForCodeAndNumber(code, number)
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getAllSymbols(onSuccess: (Collection<CardSymbol>) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getAllSymbols()
-            .executeListAndFold({
-                onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
-            }, onFailure = onFailure)
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
     }
 
     override fun getManaCostForSymbols(
@@ -162,12 +195,29 @@ class MtgClientImpl(
         val symbolsString = symbols.joinToString("") { it.symbol }
         service
             .getManaCostForSymbols(symbolsString)
-            .executeAndFold(expectedObject = CallService.Keys.MANA_COST, {
-                onSuccess(json.decodeFromJsonElement(it))
-            }, onFailure = onFailure)
+            .executeAndFold(
+                expectedObject = CallService.Keys.MANA_COST,
+                {
+                    onSuccess(json.decodeFromJsonElement(it))
+                },
+                onFailure = onFailure
+            )
     }
 
-
+    override fun searchCard(
+        query: CardQuery,
+        onSuccess: (Collection<Card>) -> Unit,
+        onFailure: (ClientException) -> Unit
+    ) {
+        service
+            .searchCards(query.toString())
+            .executeListAndFold(
+                {
+                    onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
+    }
 }
 
 fun createClient(): MtgClient {

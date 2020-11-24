@@ -1,0 +1,8 @@
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/Executors.kt:3:1: Format could not fix > [no-wildcard-imports] Wildcard import
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/CallbackClient.kt:3:1: Format could not fix > [no-wildcard-imports] Wildcard import
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/queries/Artist.kt:1:1: Format could not fix > [filename] class StringQuery should be declared in a file named StringQuery.kt
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/queries/Watermark.kt:1:1: Format could not fix > [final-newline] File must end with a newline (\n)
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/queries/Watermark.kt:3:1: Format could not fix > [no-consecutive-blank-lines] Needless blank line(s)
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/objects/Card.kt:11:1: Format could not fix > [no-wildcard-imports] Wildcard import
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/objects/Ruling.kt:6:1: Format could not fix > [no-wildcard-imports] Wildcard import
+/Users/kyledahlin/Developer/scryfall-api/scryfall-api-core/src/main/kotlin/com/kyledahlin/scryfall/Serializers.kt:14:1: Format could not fix > [no-wildcard-imports] Wildcard import
