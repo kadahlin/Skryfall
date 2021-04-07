@@ -20,6 +20,4 @@ object Games {
 
     val printsFromMtgo
         get() = NegatableQuery("game:mtgo")
-
-
 }

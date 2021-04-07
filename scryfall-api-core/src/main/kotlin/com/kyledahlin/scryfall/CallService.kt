@@ -9,8 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
-private const val ENDPOINT = "https://api.scryfall.com"
+internal const val ENDPOINT = "https://api.scryfall.com"
 
 /**
  * Client for interacting with the scryfall api and fetching data about magic cards
@@ -63,9 +64,9 @@ interface CallService {
     // Cards
     // ---------------------------------
     @GET("/cards/search")
-    fun searchCards(
+    fun queryCards(
         @Query("q") name: String,
-        @Query("include_extras") unique: String? = null,
+        @Query("unique") unique: String? = null,
         @Query("order") order: String? = null,
         @Query("dir") dir: String? = null,
         @Query("include_extras") includeExtras: Boolean? = null,
@@ -74,9 +75,21 @@ interface CallService {
         @Query("page") page: Int = 1,
     ): Call<ResponseBody>
 
+    @GET
+    fun getCards(@Url url: String): Call<ResponseBody>
+
+    @GET("/cards/{id}")
+    fun getCardWithScryfallId(
+        @Path("id") name: String,
+        @Query("format") format: String? = null,
+        @Query("face") face: String? = null,
+        @Query("version") version: String? = null,
+    ): Call<ResponseBody>
+
     object Keys {
         const val SET = "set"
         const val DATA = "data"
+        const val CARD = "card"
         const val OBJECT = "object"
         const val LIST = "list"
         const val NEXT_PAGE = "next_page"

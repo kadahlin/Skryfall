@@ -10,9 +10,17 @@ version = "1.0-SNAPSHOT"
 allprojects {
 
     group = "com.kyledahlin"
-    version = "1.0-SNAPSHOT"
+    version = "0.3-SNAPSHOT"
 
     repositories {
         mavenCentral()
+    }
+}
+
+subprojects {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }

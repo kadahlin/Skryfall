@@ -7,8 +7,11 @@ import com.kyledahlin.scryfall.UriSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import java.net.URI
 import java.util.*
+
+private const val NORMAL_IMAGE_KEY = "normal"
 
 @Serializable
 data class Card(
@@ -90,7 +93,24 @@ data class Card(
     val reserved: Boolean,
     val toughness: String? = null,
     @SerialName("type_line") val typeLine: String
-)
+) {
+    fun getImageUris(format: ImageFormat, includeFaces: Boolean = true): List<String> {
+        val stringFormat = format.format
+        val result = mutableListOf<String>()
+        imageUris?.get(stringFormat)?.let { result.add(it.jsonPrimitive.content) }
+
+        if (includeFaces) {
+            cardFaces?.forEach { face ->
+                face.imageUris?.get(stringFormat)?.let { result.add(it.jsonPrimitive.content) }
+            }
+        }
+        return result
+    }
+
+    enum class ImageFormat(val format: String) {
+        PNG("png"), BORDER_CROP("border_crop"), ART_CROP("art_crop"), LARGE("large"), NORMAL("normal"), SMALL("small")
+    }
+}
 
 @Serializable
 data class Preview(

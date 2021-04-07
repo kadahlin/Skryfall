@@ -1,0 +1,102 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.kyledahlin",
+    "module": "scryfall-api-coroutines",
+    "version": "0.3-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "oxpu2lsvofbu5kxzzwik656w2a"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
+          "url": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
+          "size": 195245,
+          "sha512": "f474e8eb2732a0f78390a74e216781554c6a4131d232f4630f1b8b824a9a26d52c5c2c7f7eea55ed123ca2a8c6c684715a3356eca35dca764e98fc564cfd9caa",
+          "sha256": "975c385972be845cd5ebe35bd5a51515ac425940dc90618954c25fa2a0549402",
+          "sha1": "b6215abda0edf95ad27fbe53dcde108449d99451",
+          "md5": "11235a6f006ad19d8a78a5742077f7cc"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core-jvm",
+          "version": {
+            "requires": "1.4.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "com.kyledahlin",
+          "module": "scryfall-api-core",
+          "version": {
+            "requires": "0.3-SNAPSHOT"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
+          "url": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
+          "size": 195245,
+          "sha512": "f474e8eb2732a0f78390a74e216781554c6a4131d232f4630f1b8b824a9a26d52c5c2c7f7eea55ed123ca2a8c6c684715a3356eca35dca764e98fc564cfd9caa",
+          "sha256": "975c385972be845cd5ebe35bd5a51515ac425940dc90618954c25fa2a0549402",
+          "sha1": "b6215abda0edf95ad27fbe53dcde108449d99451",
+          "md5": "11235a6f006ad19d8a78a5742077f7cc"
+        }
+      ]
+    }
+  ]
+}

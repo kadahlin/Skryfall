@@ -23,7 +23,10 @@ internal object DateSerializer : KSerializer<Date> {
 
 object UriSerializer : KSerializer<URI> {
     override val descriptor = PrimitiveSerialDescriptor("URI", PrimitiveKind.STRING)
-    override fun deserialize(decoder: Decoder): URI = URI.create(decoder.decodeString().trim()) // trim() is used here since I have come across at least one URI returned from the api with a trailing space
+    override fun deserialize(decoder: Decoder): URI = URI.create(
+        decoder.decodeString().trim()
+    ) // trim() is used here since I have come across at least one URI returned from the api with a trailing space
+
     override fun serialize(encoder: Encoder, value: URI) = encoder.encodeString(value.toString())
 }
 

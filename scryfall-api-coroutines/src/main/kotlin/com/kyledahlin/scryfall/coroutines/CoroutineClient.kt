@@ -33,7 +33,13 @@ interface CoroutineClient {
     suspend fun getAllSymbols(): ClientResponse<Collection<CardSymbol>>
     suspend fun getManaCostForSymbols(symbols: List<CardSymbol>): ClientResponse<ManaCost>
 
-    suspend fun searchCards(query: CardQuery): ClientResponse<Collection<Card>>
+    suspend fun searchCards(
+        query: CardQuery,
+        uniqueMode: MtgClient.UniqueMode = MtgClient.UniqueMode.CARDS
+    ): ClientResponse<Collection<Card>>
+
+    suspend fun searchCards(nextPage: String): ClientResponse<Collection<Card>>
+    suspend fun getCardByScryfallId(id: String): ClientResponse<Card>
 }
 
 class CoroutineClientImpl(
@@ -97,10 +103,20 @@ class CoroutineClientImpl(
             .getManaCostForSymbols(symbols.joinToString("") { it.symbol })
             .suspendToResponse(CallService.Keys.MANA_COST)
 
-    override suspend fun searchCards(query: CardQuery): ClientResponse<Collection<Card>> =
+    override suspend fun searchCards(query: CardQuery, unique: MtgClient.UniqueMode): ClientResponse<Collection<Card>> =
         service
-            .searchCards(query.toQueryString())
+            .queryCards(query.toQueryString(), unique = unique.name.toLowerCase())
             .suspendListToResponse()
+
+    override suspend fun searchCards(nextPage: String): ClientResponse<Collection<Card>> =
+        service
+            .getCards(nextPage)
+            .suspendListToResponse()
+
+    override suspend fun getCardByScryfallId(id: String): ClientResponse<Card> =
+        service
+            .getCardWithScryfallId(id)
+            .suspendToResponse(CallService.Keys.CARD)
 
     private suspend inline fun <reified T> Call<ResponseBody>.suspendToResponse(
         expectedObject: String,

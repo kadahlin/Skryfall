@@ -42,6 +42,4 @@ object CardQueries {
 
     val isPhyrexian = negatableIsQuery("phyrexian")
     val isHybrid = negatableIsQuery("hybrid")
-
-
 }

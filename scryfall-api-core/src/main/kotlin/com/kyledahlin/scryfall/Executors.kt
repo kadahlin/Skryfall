@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Url
 import java.net.HttpURLConnection
 import java.net.UnknownHostException
 
@@ -47,9 +48,8 @@ fun Call<ResponseBody>.executeAndFold(
 
 fun Call<ResponseBody>.executeListAndFold(
     onResponse: (List<JsonObject>) -> Unit,
-    onFailure: (ClientException) -> Unit
+    onFailure: (ClientException) -> Unit,
 ) {
-
     try {
         val response = execute()
         if (response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
@@ -62,25 +62,28 @@ fun Call<ResponseBody>.executeListAndFold(
         responseMap.foldForExpected(
             CallService.Keys.LIST,
             {
-                onFailure(UnknownException())
+                onFailure(UnknownException("object was not of the expected type"))
             },
             {
                 result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
                 var hasMore = responseMap[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
-                while (hasMore == true) {
-                    val url = HttpUrl.get(responseMap[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.contentOrNull ?: "")
-                    val response = OkHttpClient().newCall(Request.Builder().url(url).get().build()).execute()
-                    val body = response.body()?.string() ?: "{}"
-                    val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
-                    hasMore = responseMap["has_more"]?.jsonPrimitive?.booleanOrNull
-                    responseMap.foldForExpected(
+                var nextUrl = responseMap[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.content
+                while (hasMore == true && nextUrl != null) {
+                    val url = HttpUrl.get(nextUrl)
+                    val nextResponse = OkHttpClient().newCall(Request.Builder().url(url).get().build()).execute()
+                    val nextBody = nextResponse.body()?.string() ?: "{}"
+                    val decodedResponse = Json.decodeFromString(JsonObject.serializer(), nextBody)
+                    hasMore = decodedResponse[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
+                    nextUrl = decodedResponse[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.contentOrNull
+                    decodedResponse.foldForExpected(
                         CallService.Keys.LIST,
                         {
-                            result.addAll(responseMap[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject } ?: emptyList())
+                            println(decodedResponse)
+                            onFailure(UnknownException("subsequent call was not of the expected type"))
                         },
                         {
-                            println(responseMap)
-                            onFailure(UnknownException())
+                            result.addAll(decodedResponse[CallService.Keys.DATA]?.jsonArray?.map { it.jsonObject }
+                                ?: emptyList())
                         }
                     )
                 }

@@ -38,7 +38,12 @@ interface MtgClient {
         onFailure: (ClientException) -> Unit
     )
 
-    fun searchCard(query: CardQuery, onSuccess: (Collection<Card>) -> Unit, onFailure: (ClientException) -> Unit)
+    fun searchCard(query: CardQuery, unique: UniqueMode = UniqueMode.CARDS, onSuccess: (Collection<Card>) -> Unit, onFailure: (ClientException) -> Unit)
+    fun getCardByScryfallId(id: String, onSuccess: (Card) -> Unit, onFailure: (ClientException) -> Unit)
+
+    enum class UniqueMode {
+        CARDS, ART, PRINTS
+    }
 }
 
 class MtgClientImpl(
@@ -206,14 +211,27 @@ class MtgClientImpl(
 
     override fun searchCard(
         query: CardQuery,
+        unique: MtgClient.UniqueMode,
         onSuccess: (Collection<Card>) -> Unit,
         onFailure: (ClientException) -> Unit
     ) {
         service
-            .searchCards(query.toString())
+            .queryCards(query.toString(), unique.name.toLowerCase())
             .executeListAndFold(
                 {
                     onSuccess(it.map { item -> json.decodeFromJsonElement(item) })
+                },
+                onFailure = onFailure
+            )
+    }
+
+    override fun getCardByScryfallId(id: String, onSuccess: (Card) -> Unit, onFailure: (ClientException) -> Unit) {
+        service
+            .getCardWithScryfallId(id)
+            .executeAndFold(
+                expectedObject = CallService.Keys.CARD,
+                {
+                    onSuccess(json.decodeFromJsonElement(it))
                 },
                 onFailure = onFailure
             )

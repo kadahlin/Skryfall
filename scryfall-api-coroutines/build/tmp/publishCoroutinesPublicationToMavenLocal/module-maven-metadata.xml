@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.kyledahlin</groupId>
+  <artifactId>scryfall-api-coroutines</artifactId>
+  <versioning>
+    <latest>0.3-SNAPSHOT</latest>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
+      <version>0.2-SNAPSHOT</version>
+      <version>0.3-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20210207224651</lastUpdated>
+  </versioning>
+</metadata>

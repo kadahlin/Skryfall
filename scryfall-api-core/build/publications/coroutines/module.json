@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.kyledahlin",
+    "module": "scryfall-api-core",
+    "version": "0.3-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "oxpu2lsvofbu5kxzzwik656w2a"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.jakewharton.retrofit",
+          "module": "retrofit2-kotlinx-serialization-converter",
+          "version": {
+            "requires": "0.8.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "version": {
+            "requires": "1.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "scryfall-api-core-0.3-SNAPSHOT.jar",
+          "url": "scryfall-api-core-0.3-SNAPSHOT.jar",
+          "size": 218284,
+          "sha512": "46f900f823ed5d5f40e71cf514da51004160141531a52725a4d5b27c41d9858ed4d89d5caa32da78b3738a10c8b7a8156a2e014bc2e38b373cc779a7d669181d",
+          "sha256": "dc17f57026322bbda3b4122e845301d096ab7d28b489b151ce303261cce6d533",
+          "sha1": "60405603f9c866cb42426fbd090a9fb6d49c0f09",
+          "md5": "cc41d2493d964f0a40647cf598b7ea64"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.jakewharton.retrofit",
+          "module": "retrofit2-kotlinx-serialization-converter",
+          "version": {
+            "requires": "0.8.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "version": {
+            "requires": "1.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "scryfall-api-core-0.3-SNAPSHOT.jar",
+          "url": "scryfall-api-core-0.3-SNAPSHOT.jar",
+          "size": 218284,
+          "sha512": "46f900f823ed5d5f40e71cf514da51004160141531a52725a4d5b27c41d9858ed4d89d5caa32da78b3738a10c8b7a8156a2e014bc2e38b373cc779a7d669181d",
+          "sha256": "dc17f57026322bbda3b4122e845301d096ab7d28b489b151ce303261cce6d533",
+          "sha1": "60405603f9c866cb42426fbd090a9fb6d49c0f09",
+          "md5": "cc41d2493d964f0a40647cf598b7ea64"
+        }
+      ]
+    }
+  ]
+}
