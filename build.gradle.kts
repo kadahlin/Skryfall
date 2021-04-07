@@ -4,13 +4,10 @@ plugins {
     id("org.jmailen.kotlinter") version "3.2.0"
 }
 
-group = "com.kyledahlin"
-version = "1.0-SNAPSHOT"
-
 allprojects {
 
     group = "com.kyledahlin"
-    version = "0.3-SNAPSHOT"
+    version = "0.4-SNAPSHOT"
 
     repositories {
         mavenCentral()

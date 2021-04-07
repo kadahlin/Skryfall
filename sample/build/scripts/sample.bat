@@ -82,7 +82,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\sample-0.3-SNAPSHOT.jar;%APP_HOME%\lib\scryfall-api-coroutines-0.3-SNAPSHOT.jar;%APP_HOME%\lib\scryfall-api-core-0.3-SNAPSHOT.jar;%APP_HOME%\lib\kotlin-stdlib-jdk8-1.4.10.jar;%APP_HOME%\lib\kotlinx-coroutines-core-jvm-1.4.1.jar;%APP_HOME%\lib\kotlin-stdlib-jdk7-1.4.10.jar;%APP_HOME%\lib\retrofit2-kotlinx-serialization-converter-0.8.0.jar;%APP_HOME%\lib\kotlinx-serialization-json-jvm-1.0.1.jar;%APP_HOME%\lib\kotlinx-serialization-core-jvm-1.0.1.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\retrofit-2.9.0.jar;%APP_HOME%\lib\annotations-13.0.jar;%APP_HOME%\lib\okhttp-3.14.9.jar;%APP_HOME%\lib\okio-1.17.2.jar
+set CLASSPATH=%APP_HOME%\lib\sample-0.4-SNAPSHOT.jar;%APP_HOME%\lib\scryfall-api-coroutines-0.4-SNAPSHOT.jar;%APP_HOME%\lib\scryfall-api-core-0.4-SNAPSHOT.jar;%APP_HOME%\lib\kotlin-stdlib-jdk8-1.4.10.jar;%APP_HOME%\lib\kotlinx-coroutines-core-jvm-1.4.1.jar;%APP_HOME%\lib\kotlin-stdlib-jdk7-1.4.10.jar;%APP_HOME%\lib\retrofit2-kotlinx-serialization-converter-0.8.0.jar;%APP_HOME%\lib\kotlinx-serialization-json-jvm-1.0.1.jar;%APP_HOME%\lib\kotlinx-serialization-core-jvm-1.0.1.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\retrofit-2.9.0.jar;%APP_HOME%\lib\annotations-13.0.jar;%APP_HOME%\lib\okhttp-3.14.9.jar;%APP_HOME%\lib\okio-1.17.2.jar
 
 @rem Execute sample
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SAMPLE_OPTS%  -classpath "%CLASSPATH%" com.kyledahlin.sample.MainKt %CMD_LINE_ARGS%

@@ -16,7 +16,7 @@ dependencies {
 
 publishing {
     publications {
-        create<MavenPublication>("coroutines") {
+        create<MavenPublication>("core") {
             artifactId = "scryfall-api-core"
             from(components["java"])
         }
