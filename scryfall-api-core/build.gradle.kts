@@ -21,15 +21,4 @@ publishing {
             from(components["java"])
         }
     }
-
-    repositories {
-        maven {
-            name = "BrinkHorizon"
-            credentials {
-                username = "kyle@brinkhorizon.com"
-                password =  { System.getenv("MAVEN_REPO_PASS").apply { println(this)} }()
-            }
-            url = uri("https://brinkhorizon.jfrog.io/artifactory/android/")
-        }
-    }
 }

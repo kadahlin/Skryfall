@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "oxpu2lsvofbu5kxzzwik656w2a"
+      "buildId": "cxwuhvn45fax7hw6rqnd7i2amu"
     }
   },
   "variants": [
@@ -31,10 +31,10 @@
           "name": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
           "url": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
           "size": 195245,
-          "sha512": "f474e8eb2732a0f78390a74e216781554c6a4131d232f4630f1b8b824a9a26d52c5c2c7f7eea55ed123ca2a8c6c684715a3356eca35dca764e98fc564cfd9caa",
-          "sha256": "975c385972be845cd5ebe35bd5a51515ac425940dc90618954c25fa2a0549402",
-          "sha1": "b6215abda0edf95ad27fbe53dcde108449d99451",
-          "md5": "11235a6f006ad19d8a78a5742077f7cc"
+          "sha512": "878e84e6474384431d3d682d0bc5563f5ef9c54beea438be3fba6137fc11375d82e620b825b13bbb3bb185d7c78437135906cf4ac3b1884c023d596c4755dab5",
+          "sha256": "02d2c81fbc17cf6c2780bff3a82eabf511959a816dd78a13c53b621246e79a66",
+          "sha1": "db49dce366feb5e5348d0cf19bcf4b32a780e8f9",
+          "md5": "0d015b31a02c15eec4d3164cad9c5ddc"
         }
       ]
     },
@@ -91,10 +91,10 @@
           "name": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
           "url": "scryfall-api-coroutines-0.3-SNAPSHOT.jar",
           "size": 195245,
-          "sha512": "f474e8eb2732a0f78390a74e216781554c6a4131d232f4630f1b8b824a9a26d52c5c2c7f7eea55ed123ca2a8c6c684715a3356eca35dca764e98fc564cfd9caa",
-          "sha256": "975c385972be845cd5ebe35bd5a51515ac425940dc90618954c25fa2a0549402",
-          "sha1": "b6215abda0edf95ad27fbe53dcde108449d99451",
-          "md5": "11235a6f006ad19d8a78a5742077f7cc"
+          "sha512": "878e84e6474384431d3d682d0bc5563f5ef9c54beea438be3fba6137fc11375d82e620b825b13bbb3bb185d7c78437135906cf4ac3b1884c023d596c4755dab5",
+          "sha256": "02d2c81fbc17cf6c2780bff3a82eabf511959a816dd78a13c53b621246e79a66",
+          "sha1": "db49dce366feb5e5348d0cf19bcf4b32a780e8f9",
+          "md5": "0d015b31a02c15eec4d3164cad9c5ddc"
         }
       ]
     }

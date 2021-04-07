@@ -17,13 +17,11 @@ fun Call<ResponseBody>.executeAndFold(
 ) {
 
     try {
-        println("get set for code on thread: ${Thread.currentThread().name}")
         val response = execute()
         if (response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
             onFailure(UnknownResourceException())
             return
         }
-        print(response.code())
         val body = response.body()?.string() ?: "{}"
         val responseMap = Json.decodeFromString(JsonObject.serializer(), body)
         responseMap.foldForExpected(
@@ -32,7 +30,6 @@ fun Call<ResponseBody>.executeAndFold(
                 onFailure(UnknownException())
             },
             {
-                println(responseMap)
                 onResponse(responseMap)
             }
         )
@@ -78,7 +75,6 @@ fun Call<ResponseBody>.executeListAndFold(
                     decodedResponse.foldForExpected(
                         CallService.Keys.LIST,
                         {
-                            println(decodedResponse)
                             onFailure(UnknownException("subsequent call was not of the expected type"))
                         },
                         {
