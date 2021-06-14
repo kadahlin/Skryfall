@@ -11,7 +11,12 @@ module.
 
 ```kotlin
 repositories {
-    maven(url = "https://maven.pkg.github.com/kadahlin/Skryfall")
+    maven(url = "https://maven.pkg.github.com/kadahlin/Skryfall") {
+            credentials {
+                username = <your github packages username>
+                password = <your github packages password>
+            }
+        }
 }
 
 dependencies {
@@ -22,3 +27,5 @@ dependencies {
     implementation("com.kyledahlin:skryfall-callback:0.5")
 }
 ```
+
+Skryfall is currently hosted on Github packages so the necessary password and username are required. I will look into other repositories as setting up github packages is less than ideal.
