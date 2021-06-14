@@ -1,4 +1,4 @@
-include("scryfall-api-core", "scryfall-api-coroutines", "sample")
+include("skryfall-core", "skryfall-coroutines", "skryfall-callback", "sample")
 
 pluginManagement {
     repositories {

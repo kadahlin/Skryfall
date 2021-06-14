@@ -14,8 +14,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/sample" />
-            <option value="$PROJECT_DIR$/scryfall-api-core" />
-            <option value="$PROJECT_DIR$/scryfall-api-coroutines" />
+            <option value="$PROJECT_DIR$/skryfall-callback" />
+            <option value="$PROJECT_DIR$/skryfall-core" />
+            <option value="$PROJECT_DIR$/skryfall-coroutines" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -5,10 +5,9 @@ plugins {
 
 dependencies {
     implementation(Libs.kotlin)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.4.1")
+    implementation(Libs.coroutines)
 
-    implementation(project(":scryfall-api-core"))
-    implementation(project(":scryfall-api-coroutines"))
+    implementation(project(":skryfall-coroutines"))
 }
 
-application.mainClassName = "com.kyledahlin.sample.MainKt"
+application.mainClass.set("com.kyledahlin.sample.MainKt")

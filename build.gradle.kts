@@ -5,16 +5,16 @@ plugins {
 }
 
 allprojects {
-
-    group = "com.kyledahlin"
-    version = "0.4-SNAPSHOT"
-
     repositories {
         mavenCentral()
     }
 }
 
 subprojects {
+
+    group = Publishing.groupId
+    version = Publishing.version
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
         kotlinOptions {
             jvmTarget = "1.8"
