@@ -38,8 +38,8 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     val topHeavy = Power.isGreaterThanToughness
     val query: CardQuery = Type.contains("land") and (Artist.contains("titus") or Artist.contains("avon"))
 
-    val cards = (coroutineClient.searchCards(withCode("jmp")) as Success).data.filter { it.name.contains("strider") }
-    println(cards.map { it.name })
+    val cards = coroutineClient.searchCards(withCode("thb") and Language.matches("korean"))
+    println(cards)
 
     println((coroutineClient.searchCards(CardText.name("woe strider")) as Success).data.size)
     println(

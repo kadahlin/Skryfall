@@ -53,7 +53,7 @@ class AndQuery(val one: CardQuery, val two: CardQuery) : CompositeQuery() {
         if (one is EmptyQuery || two is EmptyQuery) {
             return if (one is EmptyQuery) two.toQueryString() else one.toQueryString()
         }
-        return listOf(one, two).joinToString(" ") { it.toQueryString() }
+        return listOf(one, two).joinToString("+") { it.toQueryString() }
     }
 }
 

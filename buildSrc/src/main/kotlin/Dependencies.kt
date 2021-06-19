@@ -12,5 +12,5 @@ object Libs {
 
 object Publishing {
     const val groupId = "com.kyledahlin"
-    const val version = "0.5"
+    const val version = "0.5.1"
 }
