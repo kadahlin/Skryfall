@@ -32,8 +32,11 @@ import kotlin.coroutines.suspendCoroutine
 interface SkryfallCoroutineClient {
 
     companion object {
-        fun createClient(scope: CoroutineScope? = null): SkryfallCoroutineClient {
-            return SkryfallCoroutineClientImpl(CallService.create(), scope = scope ?: CoroutineScope(Dispatchers.IO))
+        fun createClient(scope: CoroutineScope? = null, logCalls: Boolean = false): SkryfallCoroutineClient {
+            return SkryfallCoroutineClientImpl(
+                CallService.create(logCalls),
+                scope = scope ?: CoroutineScope(Dispatchers.IO)
+            )
         }
     }
 
@@ -63,6 +66,7 @@ interface SkryfallCoroutineClient {
 
     suspend fun searchCards(nextPage: String): ClientResponse<Collection<Card>>
     suspend fun getCardByScryfallId(id: String): ClientResponse<Card>
+    suspend fun getCardByCodeAndNumber(code: String, number: Int, language: String = ""): ClientResponse<Card>
 }
 
 internal class SkryfallCoroutineClientImpl(
@@ -139,6 +143,11 @@ internal class SkryfallCoroutineClientImpl(
     override suspend fun getCardByScryfallId(id: String): ClientResponse<Card> =
         service
             .getCardWithScryfallId(id)
+            .suspendToResponse(CallService.Keys.CARD)
+
+    override suspend fun getCardByCodeAndNumber(code: String, number: Int, language: String): ClientResponse<Card> =
+        service
+            .getCardWithCodeAndNumber(code.toLowerCase(), number, language)
             .suspendToResponse(CallService.Keys.CARD)
 
     private suspend inline fun <reified T> Call<ResponseBody>.suspendToResponse(

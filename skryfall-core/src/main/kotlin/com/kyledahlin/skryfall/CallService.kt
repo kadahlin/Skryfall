@@ -17,8 +17,12 @@ package com.kyledahlin.skryfall
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType
+import okhttp3.Interceptor
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.ResponseBody
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
@@ -101,6 +105,13 @@ interface CallService {
         @Query("version") version: String? = null,
     ): Call<ResponseBody>
 
+    @GET("/cards/{code}/{number}/{lang}")
+    fun getCardWithCodeAndNumber(
+        @Path("code") code: String,
+        @Path("number") number: Int,
+        @Path("lang") language: String = "",
+    ): Call<ResponseBody>
+
     object Keys {
         const val SET = "set"
         const val DATA = "data"
@@ -113,9 +124,41 @@ interface CallService {
     }
 
     companion object {
-        fun create(): CallService = Retrofit.Builder()
-            .baseUrl(ENDPOINT)
-            .addConverterFactory(Json.asConverterFactory(MediaType.parse("application/json")!!))
-            .build().create(CallService::class.java)
+
+        // Scryfall needs "+" to not be encoded to %2B
+        private val plusInterceptor = object : Interceptor {
+
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val request = chain.request()
+                val path = request.url.toString()
+
+                val string = path.replace("%2B", "+") // replace
+
+                val newRequest = request.newBuilder()
+                    .url(string)
+                    .build()
+
+                return chain.proceed(newRequest)
+            }
+        }
+
+        fun create(logCalls: Boolean): CallService {
+
+            val logger = HttpLoggingInterceptor()
+            logger.level = HttpLoggingInterceptor.Level.BASIC
+            val clientBuilder = OkHttpClient.Builder()
+                .addInterceptor(plusInterceptor)
+
+            if (logCalls) {
+                clientBuilder.addInterceptor(logger)
+            }
+            val client = clientBuilder.build()
+
+            return Retrofit.Builder()
+                .client(client)
+                .baseUrl(ENDPOINT)
+                .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+                .build().create(CallService::class.java)
+        }
     }
 }

@@ -67,9 +67,11 @@ interface SkryfallCallbackClient {
 
     fun getCardByScryfallId(id: String, onSuccess: (Card) -> Unit, onFailure: (ClientException) -> Unit)
 
+    fun getCardByCodeAndNumber(code: String, number: Int, onSuccess: (Card) -> Unit, onFailure: (ClientException) -> Unit, lang: String = "")
+
     companion object {
-        fun createClient(): SkryfallCallbackClient {
-            return SkryfallCallbackClientImpl(CallService.create())
+        fun createClient(logCalls: Boolean = false): SkryfallCallbackClient {
+            return SkryfallCallbackClientImpl(CallService.create(logCalls))
         }
     }
 }
@@ -260,6 +262,23 @@ class SkryfallCallbackClientImpl(
     override fun getCardByScryfallId(id: String, onSuccess: (Card) -> Unit, onFailure: (ClientException) -> Unit) {
         service
             .getCardWithScryfallId(id)
+            .executeAndFold(
+                expectedObject = CallService.Keys.CARD,
+                {
+                    onSuccess(json.decodeFromJsonElement(it))
+                },
+                onFailure = onFailure
+            )
+    }
+
+    override fun getCardByCodeAndNumber(
+        code: String,
+        number: Int,
+        onSuccess: (Card) -> Unit,
+        onFailure: (ClientException) -> Unit,
+        lang: String
+    ) {
+        service.getCardWithCodeAndNumber(code, number, lang)
             .executeAndFold(
                 expectedObject = CallService.Keys.CARD,
                 {

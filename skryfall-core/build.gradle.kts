@@ -12,6 +12,7 @@ dependencies {
     api(Libs.retrofit)
     api(Libs.jvmSerialization)
     api("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 }
 
 publishing {

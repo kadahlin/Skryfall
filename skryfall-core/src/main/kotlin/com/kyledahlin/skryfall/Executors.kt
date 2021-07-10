@@ -16,7 +16,7 @@ limitations under the License.
 package com.kyledahlin.skryfall
 
 import kotlinx.serialization.json.*
-import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.ResponseBody
@@ -80,9 +80,9 @@ fun Call<ResponseBody>.executeListAndFold(
                 var hasMore = responseMap[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
                 var nextUrl = responseMap[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.content
                 while (hasMore == true && nextUrl != null) {
-                    val url = HttpUrl.get(nextUrl)
+                    val url = nextUrl.toHttpUrl()
                     val nextResponse = OkHttpClient().newCall(Request.Builder().url(url).get().build()).execute()
-                    val nextBody = nextResponse.body()?.string() ?: "{}"
+                    val nextBody = nextResponse.body?.string() ?: "{}"
                     val decodedResponse = Json.decodeFromString(JsonObject.serializer(), nextBody)
                     hasMore = decodedResponse[CallService.Keys.HAS_MORE]?.jsonPrimitive?.booleanOrNull
                     nextUrl = decodedResponse[CallService.Keys.NEXT_PAGE]?.jsonPrimitive?.contentOrNull

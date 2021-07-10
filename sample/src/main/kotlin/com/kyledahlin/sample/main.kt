@@ -25,12 +25,12 @@ import com.kyledahlin.skryfall.queries.Set.withCode
 import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) = runBlocking<Unit> {
-    val coroutineClient = SkryfallCoroutineClient.createClient()
+    val coroutineClient = SkryfallCoroutineClient.createClient(logCalls = true)
 
     val isLegendary = Type.contains("legendary")
     val goblin = Type.contains("goblin")
     val elf = Type.contains("elf")
-    val isGolbinOrElf = goblin or elf
+    val isGoblinOrElf = goblin or elf
     val isNotGoblin = Type.contains("goblin")
     val isNotRare = Rarity.greaterThan(CardRarity.COMMON)
     val aboveOneDollar = Prices.usd.greaterThan(1)
@@ -41,7 +41,10 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     val cards = coroutineClient.searchCards(withCode("thb") and Language.matches("korean"))
     println(cards)
 
-    println((coroutineClient.searchCards(CardText.name("woe strider")) as Success).data.size)
+    val obliterator = coroutineClient.getCardByCodeAndNumber("NPH", 68)
+    println(obliterator)
+
+    println((coroutineClient.searchCards(CardText.name("woe strider") and Language.matches("korean")) as Success).data.first().printedName)
     println(
         (coroutineClient.searchCards(
             CardText.name("woe strider") and Games.printsFromArena,
