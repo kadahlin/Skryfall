@@ -1,1 +1,0 @@
-/Users/kyledahlin/Developer/scryfall-api/buildSrc/build/classes/kotlin/main/Libs.class:/Users/kyledahlin/Developer/scryfall-api/buildSrc/build/classes/kotlin/main/PluginVersions.class:/Users/kyledahlin/Developer/scryfall-api/buildSrc/build/classes/kotlin/main/Publishing.class

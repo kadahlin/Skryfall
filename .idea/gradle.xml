@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/skryfall-callback" />
             <option value="$PROJECT_DIR$/skryfall-core" />
             <option value="$PROJECT_DIR$/skryfall-coroutines" />
+            <option value="$PROJECT_DIR$/skryfall-test" />
           </set>
         </option>
       </GradleProjectSettings>

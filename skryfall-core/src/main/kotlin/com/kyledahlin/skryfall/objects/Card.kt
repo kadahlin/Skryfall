@@ -48,7 +48,8 @@ data class Card(
     val artist: String? = null,
     val booster: Boolean,
     @SerialName("border_color") val borderColor: String,
-    @SerialName("card_back_id") @Serializable(UUIDSerializer::class) val cardBackId: UUID,
+    // Scryfall api documents this as non-null, but modal dual faced cards do not have this field
+    @SerialName("card_back_id") @Serializable(UUIDSerializer::class) val cardBackId: UUID? = null,
     @SerialName("collector_number") val collectorNumber: String,
     @SerialName("content_warning") val contentWarning: Boolean? = null,
     val digital: Boolean,

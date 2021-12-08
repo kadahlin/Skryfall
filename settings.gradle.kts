@@ -1,4 +1,4 @@
-include("skryfall-core", "skryfall-coroutines", "skryfall-callback", "sample")
+include("skryfall-core", "skryfall-coroutines", "skryfall-callback", "skryfall-test", "sample")
 
 pluginManagement {
     repositories {

@@ -24,7 +24,7 @@ import com.kyledahlin.skryfall.queries.*
 import com.kyledahlin.skryfall.queries.Set.withCode
 import kotlinx.coroutines.runBlocking
 
-fun main(args: Array<String>) = runBlocking<Unit> {
+fun main(args: Array<String>) = runBlocking {
     val coroutineClient = SkryfallCoroutineClient.createClient(logCalls = true)
 
     val isLegendary = Type.contains("legendary")
@@ -38,16 +38,16 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     val topHeavy = Power.isGreaterThanToughness
     val query: CardQuery = Type.contains("land") and (Artist.contains("titus") or Artist.contains("avon"))
 
-    val cards = coroutineClient.searchCards(withCode("thb") and Language.matches("korean"))
-    println(cards)
+//    val cards = coroutineClient.searchCards(withCode("thb") and Language.matches("korean"))
+//    println(cards)
 
-    val obliterator = coroutineClient.getCardByCodeAndNumber("NPH", 68)
-    println(obliterator)
+    val ulamog = coroutineClient.getCardByCodeAndNumber("BFZ", 15)
+    println(ulamog)
 
-    println((coroutineClient.searchCards(CardText.name("woe strider") and Language.matches("korean")) as Success).data.first().printedName)
-    println(
-        (coroutineClient.searchCards(
-            CardText.name("woe strider") and Games.printsFromArena,
-            uniqueMode = UniqueMode.PRINTS
-        ) as Success).data.map { it.id })
+    println((coroutineClient.searchCards(CardText.name("Brutal Cathar")) as Success).data.first())
+//    println(
+//        (coroutineClient.searchCards(
+//            CardText.name("woe strider") and Games.printsFromArena,
+//            uniqueMode = UniqueMode.PRINTS
+//        ) as Success).data.map { it.id })
 }
