@@ -1,3 +1,9 @@
+## 0.8.0
+
+### Addressing missing field
+
+- A field that is documented as required is missing on dual faced cards, updating `card_back_id` to be nullable on `Card`s
+
 ## 0.7.0
 
 ### Code and collector number query
