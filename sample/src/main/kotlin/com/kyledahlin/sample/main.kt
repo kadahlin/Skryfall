@@ -17,15 +17,14 @@ package com.kyledahlin.sample
 
 import com.kyledahlin.skryfall.CardQuery
 import com.kyledahlin.skryfall.and
-import com.kyledahlin.skryfall.coroutines.SkryfallCoroutineClient
-import com.kyledahlin.skryfall.coroutines.Success
+import com.kyledahlin.skryfall.SkryfallClient
+import com.kyledahlin.skryfall.Success
 import com.kyledahlin.skryfall.or
 import com.kyledahlin.skryfall.queries.*
-import com.kyledahlin.skryfall.queries.Set.withCode
 import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) = runBlocking {
-    val coroutineClient = SkryfallCoroutineClient.createClient(logCalls = true)
+    val coroutineClient = SkryfallClient.createClient(logCalls = true)
 
     val isLegendary = Type.contains("legendary")
     val goblin = Type.contains("goblin")

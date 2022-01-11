@@ -1,8 +1,7 @@
-include("skryfall-core", "skryfall-coroutines", "skryfall-callback", "skryfall-test", "sample")
+rootProject.name = "Skryfall"
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        jcenter()
-    }
+dependencyResolutionManagement {
+    includeBuild("skryfall")
+    includeBuild("skryfall-test")
+    includeBuild("sample")
 }

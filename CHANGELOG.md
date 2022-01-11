@@ -1,3 +1,9 @@
+## 0.9.0
+
+### Multiplatform support
+
+- Base library is now published as multiplatform and extension libraries are available for JVM/Android
+
 ## 0.8.0
 
 ### Addressing missing field

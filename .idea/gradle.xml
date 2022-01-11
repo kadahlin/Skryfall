@@ -8,15 +8,14 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="1.8" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/7.2/libexec" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/sample" />
-            <option value="$PROJECT_DIR$/skryfall-callback" />
-            <option value="$PROJECT_DIR$/skryfall-core" />
-            <option value="$PROJECT_DIR$/skryfall-coroutines" />
+            <option value="$PROJECT_DIR$/skryfall" />
             <option value="$PROJECT_DIR$/skryfall-test" />
           </set>
         </option>

@@ -1,12 +1,16 @@
 plugins {
-    kotlin("jvm")
-    `maven-publish`
+    id("com.kyledahlin.mpp")
 }
 
-dependencies {
-    implementation(Libs.kotlin)
-
-    api(project(":skryfall-core"))
+kotlin {
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation("com.kyledahlin.skryfall:skryfall")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+            }
+        }
+    }
 }
 
 publishing {

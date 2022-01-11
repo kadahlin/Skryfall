@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="skryfall-js-0.9.0">
+    <output-path>$PROJECT_DIR$/skryfall/build/libs</output-path>
+    <root id="archive" name="skryfall-js-0.9.0.jar">
+      <element id="module-output" name="scryfall-api.skryfall.jsMain" />
+    </root>
+  </artifact>
+</component>
