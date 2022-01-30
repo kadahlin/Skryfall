@@ -7,43 +7,27 @@ usage can be seen in the `/sample` module. Builders for the objects returned by 
 
 ## To use:
 
-Include the package in your common source set
+###Bazel
 
-```kotlin
-kotlin {
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation("com.kyledahlin:skryfall:0.9.0")
-            }
-        }
+WORKSPACE
 
-        val commonTest by getting {
-            dependencies {
-                implementation("com.kyledahlin.skryfall-test:0.9.0")
-            }
-        }
-    }
-}
+```
+git_repository(
+    name = "skryfall",
+    remote = "https://github.com/kadahlin/Skryfall.git",
+    branch = "master"
+)
 ```
 
-Or use directly in an android/JVM package
-
-```kotlin
-repositories {
-    maven(url = "https://maven.pkg.github.com/kadahlin/Skryfall") {
-        credentials {
-            username = "<your github packages username>"
-            password = "<your github packages password>"
-        }
-    }
-}
-
-dependencies {
-    implementation("com.kyledahlin:skryfall:0.9.0")
-    testImplementation("com.kyledahlin.skryfall-test:0.9.0")
-}
+BUILD
+```
+kt_jvm_library(
+    ...
+    deps = [
+        "@skryfall//skryfall",
+        "@skryfall//skryfall-test"
+    ]
+)
 ```
 
-Skryfall is currently hosted on Github packages so the necessary password and username are required. I will look into
-other repositories as setting up github packages is less than ideal.
+Older skryfall versions are available in github packages

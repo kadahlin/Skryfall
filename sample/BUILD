@@ -1,6 +1,5 @@
 load("@rules_java//java:defs.bzl", "java_binary")
-load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
-load("@io_bazel_rules_kotlin//kotlin:lint.bzl", "ktlint_fix", "ktlint_test")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library", "kt_jvm_test")
 
 kt_jvm_library(
     name = "sample",
@@ -8,6 +7,16 @@ kt_jvm_library(
     srcs = glob(["src/main/**/*.kt"]),
     deps = [
         "//skryfall",
+    ],
+)
+
+kt_jvm_test(
+    name = "sample_test",
+    test_class = "com.kyledahlin.sample.ExampleTest",
+    srcs = glob(["src/test/**/*.kt"]),
+    deps = [
+        "//skryfall-test",
+        "@maven//:junit_junit"
     ],
 )
 

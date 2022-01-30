@@ -40,7 +40,7 @@ fun main(args: Array<String>) = runBlocking {
 //    val cards = coroutineClient.searchCards(withCode("thb") and Language.matches("korean"))
 //    println(cards)
 
-    val ulamog = coroutineClient.getCardByCodeAndNumber("BFZ", 15)
+    val ulamog = coroutineClient.getCardByCodeAndNumber("BFZ", 14)
     println(ulamog)
 
     println((coroutineClient.searchCards(CardText.name("Brutal Cathar")) as Success).data.first())
