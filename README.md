@@ -9,13 +9,29 @@ in the `skryfall-test` module.
 
 ###Bazel
 
-WORKSPACE
+To use skryfall you must declare the provided artifact list to satisfy the 
+transitive dependencies.
+
+WORKSPACE:
 
 ```
 git_repository(
     name = "skryfall",
     remote = "https://github.com/kadahlin/Skryfall.git",
     branch = "master"
+)
+
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@skryfall//skryfall:skryfall_deps.bzl", "SKRYFALL_ARTIFACTS")
+load("@skryfall//skryfall-test:skryfall-test_deps.bzl", "SKRYFALL_TEST_ARTIFACTS")
+
+maven_install(
+    artifacts = [
+    <your deps>    
+    ] + SKRYFALL_ARTIFACTS + SKRYFALL_TEST_ARTIFACTS,
+    repositories = [
+        "https://repo1.maven.org/maven2"
+    ]
 )
 ```
 
@@ -30,4 +46,5 @@ kt_jvm_library(
 )
 ```
 
-Older skryfall versions are available in github packages
+Older skryfall versions are available in github packages, gradle integration 
+of the bazel module is a WIP.
