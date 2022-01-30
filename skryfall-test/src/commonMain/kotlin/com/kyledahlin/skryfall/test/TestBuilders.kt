@@ -1,27 +1,28 @@
 package com.kyledahlin.skryfall.test
 
 import com.kyledahlin.skryfall.objects.*
-import kotlinx.datetime.LocalDate
 import kotlinx.serialization.json.JsonObject
+import java.net.URI
+import java.util.*
 
 fun card(
     arenaId: Int? = null,
-    id: Uuid = Uuid(""),
+    id: UUID = UUID.randomUUID(),
     lang: String = "",
     mtgoId: Int? = null,
     mtgoFoilId: Int? = null,
     multiverseIds: List<Int>? = null,
     tcgPlayerId: Int? = null,
     cardMarketId: Int? = null,
-    oracleId: Uuid = Uuid(""),
-    printsSearchUri: Uri = Uri(""),
-    rulingsUri: Uri = Uri(""),
-    scryfallUri: Uri = Uri(""),
-    uri: Uri = Uri(""),
+    oracleId: UUID = UUID.randomUUID(),
+    printsSearchUri: URI = URI.create(""),
+    rulingsUri: URI = URI.create(""),
+    scryfallUri: URI = URI.create(""),
+    uri: URI = URI.create(""),
     artist: String? = null,
     booster: Boolean = false,
     borderColor: String = "",
-    cardBackId: Uuid = Uuid(""),
+    cardBackId: UUID = UUID.randomUUID(),
     collectorNumber: String = "",
     contentWarning: Boolean? = null,
     digital: Boolean = false,
@@ -32,7 +33,7 @@ fun card(
     fullArt: Boolean = false,
     games: List<String> = listOf(),
     highresImage: Boolean = false,
-    illustrationId: Uuid? = null,
+    illustrationId: UUID? = null,
     imageUris: JsonObject? = null,
     prices: JsonObject = JsonObject(emptyMap()),
     printedName: String? = null,
@@ -43,16 +44,16 @@ fun card(
     purchaseUris: JsonObject = JsonObject(emptyMap()),
     rarity: String = "",
     relatedUris: JsonObject = JsonObject(emptyMap()),
-    releasedAt: LocalDate = LocalDate(1, 1, 1),
+    releasedAt: Date = Date(),
     reprint: Boolean = false,
-    scryfallSetUri: Uri = Uri(""),
+    scryfallSetUri: URI = URI.create(""),
     setType: String = "",
-    setUri: Uri = Uri(""),
+    setUri: URI = URI.create(""),
     set: String = "",
     storySpotlight: Boolean = false,
     textless: Boolean = false,
     variation: Boolean = false,
-    variationOf: Uuid? = null,
+    variationOf: UUID? = null,
     watermark: String? = null,
     preview: Preview? = null,
     allParts: List<RelatedCard>? = null,
@@ -157,11 +158,11 @@ fun card(
 )
 
 fun relatedCard(
-    id: Uuid = Uuid(""),
+    id: UUID = UUID.randomUUID(),
     component: Component = Component.TOKEN,
     name: String = "",
     typeLine: String = "",
-    uri: Uri = Uri("")
+    uri: URI = URI.create("")
 ): RelatedCard = RelatedCard(
     id = id, component = component, name = name, typeLine = typeLine, uri = uri
 )
@@ -171,7 +172,7 @@ fun cardFace(
     colorIndicator: List<CardColor>? = null,
     colors: List<CardColor>? = null,
     flavorText: String? = null,
-    illustrationId: Uuid? = null,
+    illustrationId: UUID? = null,
     imageUris: JsonObject? = null,
     loyalty: String? = null,
     manaCost: String = "",

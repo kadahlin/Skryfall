@@ -18,6 +18,7 @@ package com.kyledahlin.skryfall.objects
 import com.kyledahlin.skryfall.UriSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.net.URI
 
 @Serializable
 data class CardSymbol(
@@ -31,5 +32,5 @@ data class CardSymbol(
     val funny: Boolean,
     val colors: List<CardColor>,
     @SerialName("gatherer_alternates") val gathererAlternates: List<String>? = null,
-    @SerialName("svg_uri") @Serializable(with = UriSerializer::class) val svgUri: Uri? = null
+    @SerialName("svg_uri") @Serializable(with = UriSerializer::class) val svgUri: URI? = null
 )

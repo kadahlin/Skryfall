@@ -18,6 +18,7 @@ package com.kyledahlin.skryfall.objects
 import com.kyledahlin.skryfall.UriSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.net.URI
 
 /**
  * Information about a set of cards. This could be either an official set (legal in standard play) or an unofficial set (promotional)
@@ -39,8 +40,8 @@ data class Set(
     val digital: Boolean,
     @SerialName("foil_only") val foilOnly: Boolean,
     @SerialName("nonfoil_only") val nonFoilOnly: Boolean,
-    @SerialName("scryfall_uri") @Serializable(with = UriSerializer::class) val scryfallUri: Uri,
-    @Serializable(with = UriSerializer::class) val uri: Uri,
-    @SerialName("icon_svg_uri") @Serializable(with = UriSerializer::class) val iconSvgUri: Uri,
-    @SerialName("search_uri") @Serializable(with = UriSerializer::class) val searchUri: Uri
+    @SerialName("scryfall_uri") @Serializable(with = UriSerializer::class) val scryfallUri: URI,
+    @Serializable(with = UriSerializer::class) val uri: URI,
+    @SerialName("icon_svg_uri") @Serializable(with = UriSerializer::class) val iconSvgUri: URI,
+    @SerialName("search_uri") @Serializable(with = UriSerializer::class) val searchUri: URI
 )

@@ -1,12 +1,9 @@
 /*
 Copyright 2021 Kyle Dahlin
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
 http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,31 +14,32 @@ package com.kyledahlin.skryfall
 
 import com.kyledahlin.skryfall.objects.CardColor
 import com.kyledahlin.skryfall.objects.Component
-import com.kyledahlin.skryfall.objects.Uri
-import com.kyledahlin.skryfall.objects.Uuid
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.toLocalDate
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import java.net.URI
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
-internal object DateSerializer : KSerializer<LocalDate> {
+internal object DateSerializer : KSerializer<Date> {
+    private val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
 
-    override val descriptor = PrimitiveSerialDescriptor("LocalDate", PrimitiveKind.STRING)
-    override fun deserialize(decoder: Decoder): LocalDate = decoder.decodeString().toLocalDate()
-    override fun serialize(encoder: Encoder, value: LocalDate) = encoder.encodeString(value.toString())
+    override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
+    override fun deserialize(decoder: Decoder): Date = df.parse(decoder.decodeString())
+    override fun serialize(encoder: Encoder, value: Date) = encoder.encodeString(df.format(value))
 }
 
-internal object UriSerializer : KSerializer<Uri> {
+internal object UriSerializer : KSerializer<URI> {
     override val descriptor = PrimitiveSerialDescriptor("URI", PrimitiveKind.STRING)
-    override fun deserialize(decoder: Decoder): Uri = Uri(
+    override fun deserialize(decoder: Decoder): URI = URI.create(
         decoder.decodeString().trim()
     ) // trim() is used here since I have come across at least one URI returned from the api with a trailing space
 
-    override fun serialize(encoder: Encoder, value: Uri) = encoder.encodeString(value.value)
+    override fun serialize(encoder: Encoder, value: URI) = encoder.encodeString(value.toString())
 }
 
 internal object CardColorSerializer : KSerializer<CardColor> {
@@ -54,7 +52,7 @@ internal object CardColorSerializer : KSerializer<CardColor> {
         "U" -> CardColor.BLUE
         "G" -> CardColor.GREEN
         "C" -> CardColor.COLORLESS
-        else -> throw Exception("unknown value when deserializing colors: $color")
+        else -> throw NoSuchFieldException("unknown value when deserializing colors: $color")
     }
 
     override fun serialize(encoder: Encoder, value: CardColor) {
@@ -70,10 +68,10 @@ internal object CardColorSerializer : KSerializer<CardColor> {
     }
 }
 
-internal object UuidSerializer : KSerializer<Uuid> {
+internal object UUIDSerializer : KSerializer<UUID> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
-    override fun deserialize(decoder: Decoder) = Uuid(decoder.decodeString())
-    override fun serialize(encoder: Encoder, value: Uuid) = encoder.encodeString(value.value)
+    override fun deserialize(decoder: Decoder) = UUID.fromString(decoder.decodeString())
+    override fun serialize(encoder: Encoder, value: UUID) = encoder.encodeString(value.toString())
 }
 
 internal object ComponentSerializer : KSerializer<Component> {
@@ -84,7 +82,7 @@ internal object ComponentSerializer : KSerializer<Component> {
         "meld_part" -> Component.MELD_PART
         "meld_result" -> Component.MELD_RESULT
         "combo_piece" -> Component.COMBO_PIECE
-        else -> throw Exception("unknown value when deserializing component: $comp")
+        else -> throw NoSuchFieldException("unknown value when deserializing component: $comp")
     }
 
     override fun serialize(encoder: Encoder, value: Component) {
