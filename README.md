@@ -1,9 +1,9 @@
 # Skryfall
 
-This is an unofficial library for type safe access to the [scryfall api](https://scryfall.com/docs/api) using Kotlin
-Multiplatform. I made this as a utility for another project and figured it would make a good library. The API is in no
+This is an unofficial library for type safe access to the [scryfall api](https://scryfall.com/docs/api) using Bazel. I made this as a utility for another project and figured it would make a good library. The API is in no
 way final and is subject to change with additional releases. Further documentation will be coming but for now a sample
-usage can be seen in the `/sample` module. Builders for the objects returned by the client for use in testing are found in the `skryfall-test` package.
+usage can be seen in the `/sample` module. Builders for the objects returned by the client for use in testing are found
+in the `skryfall-test` module.
 
 ## To use:
 
