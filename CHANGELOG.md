@@ -1,3 +1,7 @@
+## 0.9.1
+
+- Making `purchaseUri` field on `Card` optional since Alchemy fields do not have this field. The Skryfall api does not list this as optional. 
+
 ## 0.9.0
 
 - Rewritten to bazel and documents updated

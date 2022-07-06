@@ -65,7 +65,7 @@ data class Card(
     @SerialName("printed_type_line") val printedTypeLine: String? = null,
     val promo: Boolean,
     @SerialName("promo_types") val promoTypes: List<String>? = null,
-    @SerialName("purchase_uris") val purchaseUris: JsonObject,
+    @SerialName("purchase_uris") val purchaseUris: JsonObject? = null,
     val rarity: String,
     @SerialName("related_uris") val relatedUris: JsonObject,
     @SerialName("released_at") @Serializable(DateSerializer::class) val releasedAt: Date,

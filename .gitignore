@@ -132,3 +132,4 @@ bazel-bin
 bazel-out
 bazel-scryfall-api
 bazel-testlogs
+bazel-Skryfall

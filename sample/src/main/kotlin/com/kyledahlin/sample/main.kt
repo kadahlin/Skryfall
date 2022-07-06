@@ -43,7 +43,8 @@ fun main(args: Array<String>) = runBlocking {
     val ulamog = coroutineClient.getCardByCodeAndNumber("BFZ", 14)
     println(ulamog)
 
-    println((coroutineClient.searchCards(CardText.name("Brutal Cathar")) as Success).data.first())
+    //Alchemy card
+    println((coroutineClient.searchCards(CardText.name("Racketeer Boss")) as Success).data.first())
 //    println(
 //        (coroutineClient.searchCards(
 //            CardText.name("woe strider") and Games.printsFromArena,
